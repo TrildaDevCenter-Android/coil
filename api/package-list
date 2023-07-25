@@ -37,4 +37,5 @@ module:coil-test
 coil.test
 module:coil-video
 coil.decode
+coil.fetch
 coil.request
