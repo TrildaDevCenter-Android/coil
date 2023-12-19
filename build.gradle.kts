@@ -145,6 +145,15 @@ allprojects {
         }
     }
 
+    plugins.withId("org.jetbrains.compose") {
+        tasks.withType<KotlinCompile> {
+            val outputDir = rootDir.resolve("coil-core/compose_compiler_config.conf").path
+            compilerOptions.freeCompilerArgs.addAll(
+                "-P", "$composePlugin:stabilityConfigurationPath=$outputDir",
+            )
+        }
+    }
+
     // TODO: Fix wasm tests.
     afterEvaluate {
         tasks.findByName("wasmJsBrowserTest")?.enabled = false
